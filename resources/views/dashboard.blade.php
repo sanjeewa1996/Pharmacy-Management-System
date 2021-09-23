@@ -5,5 +5,9 @@
         </h2>
     </x-slot> --}}
     <h2>Dashboard Content</h2>
+    <form method="GET" action="{{ route('test') }}">
+        <button>Test</button>
+    </form>
+
 
 </x-app-layout>
