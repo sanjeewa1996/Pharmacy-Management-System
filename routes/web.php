@@ -24,16 +24,14 @@ Route::group(['prefix'=> 'admin', 'middleware'=>['admin:admin']], function(){
     Route::post('/login', [AdminController::class, 'store']);
 });
 
+Route::get('/admin/logout', [AdminController::class, 'destroy'])->name('admin.logout');
+
 Route::middleware(['auth:sanctum,admin', 'verified'])->get('/admin/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+    return view('admin.index');
+})->name('admin.index');
 
 Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
+    return view('admin.index');
 })->name('dashboard');
-
-Route::get('/', function () {
-    return redirect('login');
-});
 
 Route::get('/test', [TestController::class, 'testApi'])->name('test');
