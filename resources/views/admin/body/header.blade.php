@@ -14,16 +14,6 @@
 					<i class="nav-link-icon mdi mdi-crop-free"></i>
 			    </a>
 			</li>
-			<li class="btn-group nav-item d-none d-xl-inline-block">
-				<a href="#" class="waves-effect waves-light nav-link rounded svg-bt-icon" title="">
-					<i class="ti-check-box"></i>
-			    </a>
-			</li>
-			<li class="btn-group nav-item d-none d-xl-inline-block">
-				<a href="calendar.html" class="waves-effect waves-light nav-link rounded svg-bt-icon" title="">
-					<i class="ti-calendar"></i>
-			    </a>
-			</li>
 		  </ul>
 	  </div>
 
@@ -102,24 +92,22 @@
 		  </li>
 
 	      <!-- User Account-->
+          @php
+              $user = DB::table('admins')->first();
+          @endphp
           <li class="dropdown user user-menu">
 			<a href="#" class="waves-effect waves-light rounded dropdown-toggle p-0" data-toggle="dropdown" title="User">
-				<img src="{{ asset('backend/images/avatar/1.jpg') }}" alt="">
+				<img src="{{ !empty($user->profile_photo_path) ? url('upload/admin_image/'.$user->profile_photo_path) : url('upload/profile_image.png') }}" alt="">
 			</a>
 			<ul class="dropdown-menu animated flipInX">
 			  <li class="user-body">
-				 <a class="dropdown-item" href="#"><i class="ti-user text-muted mr-2"></i> Profile</a>
+				 <a class="dropdown-item" href="{{ route('admin.profile') }}"><i class="ti-user text-muted mr-2"></i> Profile</a>
 				 <a class="dropdown-item" href="#"><i class="ti-wallet text-muted mr-2"></i> My Wallet</a>
 				 <a class="dropdown-item" href="#"><i class="ti-settings text-muted mr-2"></i> Settings</a>
 				 <div class="dropdown-divider"></div>
 				 <a class="dropdown-item" href="{{ route('admin.logout') }}"><i class="ti-lock text-muted mr-2"></i> Logout</a>
 			  </li>
 			</ul>
-          </li>
-		  <li>
-              <a href="#" data-toggle="control-sidebar" title="Setting" class="waves-effect waves-light">
-			  	<i class="ti-settings"></i>
-			  </a>
           </li>
 
         </ul>
