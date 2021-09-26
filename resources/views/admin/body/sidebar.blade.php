@@ -26,7 +26,7 @@
 
         <li class="treeview">
           <a href="#">
-            <i data-feather="message-circle"></i>
+            <i data-feather="clipboard"></i>
             <span>Medicine</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
@@ -40,7 +40,7 @@
 
         <li class="treeview">
           <a href="#">
-            <i data-feather="mail"></i>
+            <i data-feather="truck"></i>
             <span>Supliers</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
@@ -54,7 +54,7 @@
 
         <li class="treeview">
           <a href="#">
-            <i data-feather="file"></i>
+            <i data-feather="users"></i>
             <span>Employees</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
