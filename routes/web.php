@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminEmployeeController;
+use App\Http\Controllers\AdminMedicineController;
 use App\Http\Controllers\AdminProfileController;
+use App\Http\Controllers\AdminSupplierController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,12 +32,13 @@ Route::get('/admin/logout', [AdminController::class, 'destroy'])->name('admin.lo
 Route::get('/admin/profile', [AdminProfileController::class, 'index'])->name('admin.profile');
 Route::post('/admin/profile.edit', [AdminProfileController::class, 'edit'])->name('admin.profile.edit');
 
-Route::get('/admin/medicine', [AdminProfileController::class, 'index'])->name('admin.medicine');
-Route::get('/admin/medicine/add', [AdminProfileController::class, 'index'])->name('admin.medicine.add');
-Route::get('/admin/supplier', [AdminProfileController::class, 'index'])->name('admin.supplier');
-Route::get('/admin/supplier/add', [AdminProfileController::class, 'index'])->name('admin.supplier.add');
-Route::get('/admin/employee', [AdminProfileController::class, 'index'])->name('admin.employee');
-Route::get('/admin/employee/add', [AdminProfileController::class, 'index'])->name('admin.employee.add');
+Route::get('/admin/medicine', [AdminMedicineController::class, 'index'])->name('admin.medicine');
+Route::get('/admin/medicine/store', [AdminMedicineController::class, 'store'])->name('admin.medicine.add');
+Route::get('/admin/supplier', [AdminSupplierController::class, 'index'])->name('admin.supplier');
+Route::get('/admin/supplier/store', [AdminSupplierController::class, 'store'])->name('admin.supplier.add');
+Route::get('/admin/supplier/verification/{regNo}', [AdminSupplierController::class, 'verification'])->name('admin.supplier.verification');
+Route::get('/admin/employee', [AdminEmployeeController::class, 'index'])->name('admin.employee');
+Route::get('/admin/employee/store', [AdminEmployeeController::class, 'store'])->name('admin.employee.add');
 
 
 Route::middleware(['auth:sanctum,admin', 'verified'])->get('/admin/dashboard', function () {

@@ -41,14 +41,14 @@
         <li class="treeview">
           <a href="#">
             <i data-feather="truck"></i>
-            <span>Supliers</span>
+            <span>Suppliers</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ route('admin.supplier') }}"><i class="ti-more"></i>All Supliers</a></li>
-            <li><a href="{{ route('admin.supplier.add') }}"><i class="ti-more"></i>Add Suplier</a></li>
+            <li><a href="{{ route('admin.supplier') }}"><i class="ti-more"></i>All Suppliers</a></li>
+            <li><a href="{{ route('admin.supplier.add') }}"><i class="ti-more"></i>Add Supplier</a></li>
           </ul>
         </li>
 

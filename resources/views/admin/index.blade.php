@@ -42,7 +42,7 @@
                     <i class="text-warning mr-0 font-size-24 mdi mdi-car"></i>
                 </div>
                 <div>
-                    <p class="text-mute mt-20 mb-0 font-size-16">Total Supliers</p>
+                    <p class="text-mute mt-20 mb-0 font-size-16">Total Suppliers</p>
                     <h3 class="text-white mb-0 font-weight-500">25</h3>
                 </div>
             </div>
