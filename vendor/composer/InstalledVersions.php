@@ -29,7 +29,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'cd39c3bda2a01a93191d08adf1f09b1dca560ad3',
+    'reference' => 'b322fc02ed28911ecf5570d463b9c1b9c22c8682',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -504,7 +504,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'cd39c3bda2a01a93191d08adf1f09b1dca560ad3',
+      'reference' => 'b322fc02ed28911ecf5570d463b9c1b9c22c8682',
     ),
     'laravel/sail' => 
     array (
@@ -1399,6 +1399,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '6964c76c7804814a842473e0c8fd15bab0f18e25',
+    ),
+    'yajra/laravel-datatables-oracle' => 
+    array (
+      'pretty_version' => 'v9.18.1',
+      'version' => '9.18.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '7148225d52bcdfdd77c24e8d456058f1150b84e7',
     ),
   ),
 );

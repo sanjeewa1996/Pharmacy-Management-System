@@ -3,6 +3,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
 <div class="content-header">
     <div class="d-flex align-items-center">
@@ -35,43 +36,150 @@
             <h4></h4>
             <form id="form-1" action="javascript:void(0)" method="GET">
                 <div class="form-group">
-                    <h5>Basic Text Input <span class="text-danger">*</span></h5>
+                    <h5>Supplier Registration Number <span class="text-danger">*</span></h5>
                     <div class="controls">
                         <input type="text" id="name" name="name" class="form-control"  data-validation-required-message="This field is required"> <div class="help-block"></div></div>
 
-                        <div class="form-control-feedback"><small id="error"></small></div>
+                        {{-- <div class="form-control-feedback"><small id="error"></small></div> --}}
 
-                        <div class="text-xs-right">
-							<button type="button" id="submit" class="btn btn-rounded btn-info">Submit</button>
-						</div>
+
                 </div>
             </form>
           </div>
           <div class="box-footer text-right">
             {{-- <button class="btn btn-rounded btn-primary">Check</button> --}}
-            <button type="button" class="btn btn-rounded btn-info" data-toggle="modal" data-target="#modal-center">
+            {{-- <button type="button" class="btn btn-rounded btn-info" data-toggle="modal" data-target="#modal-center">
                 Launch demo modal
-              </button>
+              </button> --}}
+              <div class="text-xs-right">
+                <button type="button" id="submit" class="btn btn-rounded btn-info">Submit</button>
+            </div>
 
           </div>
         </div>
       </div>
 
-      <div class="modal center-modal fade" id="modal-center" tabindex="-1">
+      <div class="modal center-modal fade" id="sForm" tabindex="-1">
         <div class="modal-dialog">
-          <div class="modal-content">
+            <div class="modal-content" style="border-radius: 8px;">
+              <form method="POST" action="{{ route('admin.supplier.save') }}" enctype="multipart/form-data">
+                @csrf
+                <input type="hidden" name="regNo" id="regNo" value="">
+                <input type="hidden" name="nic" id="nic" value="">
+              <div class="modal-header">
+                <h5 class="modal-title text-secondary" id="Registration"></h5>
+                <button type="button" class="close" data-dismiss="modal">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="box-body">
+                    <div class="row">
+                      <div class="col">
+
+                            <div class="row">
+                              <div class="col-12">
+                                  <div class="form-group">
+                                      <h5>NIC Number <span class="text-danger">*</span></h5>
+                                      <div class="controls">
+                                          <input type="text" name="nicN" id="nicN" class="form-control" disabled required data-validation-required-message="This field is required"> <div class="help-block"></div>
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <h5>First Name <span class="text-danger">*</span></h5>
+                                      <div class="controls">
+                                          <input type="text" name="fname" id="fname" class="form-control" required data-validation-required-message="This field is required"> <div class="help-block"></div></div>
+                                  </div>
+                                  <div class="form-group">
+                                      <h5>Last Name <span class="text-danger">*</span></h5>
+                                      <div class="controls">
+                                          <input type="text" name="lname" id="lname" class="form-control" required data-validation-required-message="This field is required"> <div class="help-block"></div>
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <h5>Email <span class="text-danger">*</span></h5>
+                                      <div class="controls">
+                                          <input type="email" name="email" id="email" class="form-control" required data-validation-required-message="This field is required"> <div class="help-block text-danger"></div></div>
+                                  </div>
+                                  <div class="form-group">
+                                      <h5>Telephone <span class="text-danger">*</span></h5>
+                                      <div class="controls">
+                                          <input type="number" name="phone" id="phone" min="0" class="form-control" required data-validation-required-message="This field is required"> <div class="help-block"></div></div>
+                                  </div>
+                              </div>
+                            </div>
+
+
+                      </div>
+                      <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                  </div>
+              </div>
+              <div class="modal-footer modal-footer-uniform" style="width: 100%;">
+                <button type="button" class="btn btn-rounded btn-danger float-left" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-rounded btn-primary float-right">Save</button>
+              </div>
+            </form>
+            </div>
+          </div>
+      </div>
+
+      <div class="modal center-modal fade"  id="modal-center" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content" style="border-radius: 8px;">
             <div class="modal-header">
-              <h5 class="modal-title">Modal title</h5>
+              <h5 class="modal-title text-danger">Invalid Registration Number</h5>
               <button type="button" class="close" data-dismiss="modal">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-              <p>Your content comes here</p>
+              <p>This is not a registerd number. Check your number and try again.</p>
             </div>
             <div class="modal-footer modal-footer-uniform">
-              <button type="button" class="btn btn-rounded btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-rounded btn-primary float-right">Save changes</button>
+              <button type="button" class="btn btn-rounded btn-danger float-right" data-dismiss="modal">Close</button>
+              {{-- <button type="button" class="btn btn-rounded btn-primary float-right">Save changes</button> --}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal center-modal fade"  id="database-error" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content" style="border-radius: 8px;">
+            <div class="modal-header">
+              <h5 class="modal-title text-danger">Database Error Occurred</h5>
+              <button type="button" class="close" data-dismiss="modal">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Unable to Connect. Try Again later</p>
+            </div>
+            <div class="modal-footer modal-footer-uniform">
+              <button type="button" class="btn btn-rounded btn-danger float-right" data-dismiss="modal">Close</button>
+              {{-- <button type="button" class="btn btn-rounded btn-primary float-right">Save changes</button> --}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal center-modal fade"  id="already_exit" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content" style="border-radius: 8px;">
+            <div class="modal-header">
+              <h5 class="modal-title text-danger">Already Exit</h5>
+              <button type="button" class="close" data-dismiss="modal">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>This Supplier Already Exit in This System. Try Again with New Registration Number</p>
+            </div>
+            <div class="modal-footer modal-footer-uniform">
+              <button type="button" class="btn btn-rounded btn-danger float-right" data-dismiss="modal">Close</button>
+              {{-- <button type="button" class="btn btn-rounded btn-primary float-right">Save changes</button> --}}
             </div>
           </div>
         </div>
@@ -107,20 +215,37 @@
                 $('#overlay').hide();
             },
             success: function (data) {
-                console.log(5769479846795);
-                if (data.status == "success") {
-                    $('#error').html(data.data);
-                    // window.location.href = "{{ route('admin.supplier') }}";
-                    console.log(data.data.supplier);
+                if(data.status == "exit") {
+                    $('#already_exit').modal('show');
+                }
+                else if (data.status == "success") {
+                    // var supplier = data.data[0];
+                    // var url2 = "{{ route('admin.supplier.verification',':supplier') }}";
+                    // url3 = url2.replace(':supplier', supplier);
+                    // window.location.href = url3;
+                    // console.log(data.data[0]);
+                    $('#regNo').val(data.data[0].regNo);
+                    $('#Registration').html(data.data[0].regNo);
+                    $('#nicN').val(data.data[0].nic);
+                    $('#nic').val(data.data[0].nic);
+                    $('#fname').val(data.data[0].fName);
+                    $('#lname').val(data.data[0].lName);
+                    $('#email').val(data.data[0].email);
+                    $('#sForm').modal('show');
+                }
+                else if(data.status == "invalid")
+                {
+
+                    $('#modal-center').modal('show');
+                    // $('#error').html('Invalid Registration Number. Check and Try again');
                 }
                 else
                 {
-                    $('#error').html('Invalid Registration Number. Check and Try again');
+                    $('#database-error').modal('show');
                 }
             }
         });
     });
-
 </script>
 
 @endsection
