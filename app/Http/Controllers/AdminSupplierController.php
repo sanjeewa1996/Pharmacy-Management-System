@@ -39,7 +39,7 @@ class AdminSupplierController extends Controller
 
         if($data->Status == true)
         {
-            return response()->json(['status' => 'success', 'data' => $data->sup]);
+            return response()->json(['status' => 'success', 'data' => $data->supplier]);
         }
         elseif($data->Status == false)
         {

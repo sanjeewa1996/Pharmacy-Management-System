@@ -34,15 +34,15 @@
         <!-- /.box-header -->
         <div class="box-body">
         <div class="table-responsive">
-            <table id="suppliers" class="table table-bordered table-hover display nowrap margin-top-10 w-p100">
+            <table id="products" class="table table-bordered table-hover display nowrap margin-top-10 w-p100">
             <thead>
                 <tr>
                     <th>#</th>
                     <th>Registration Number</th>
-                    <th>NIC</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email</th>
+                    <th>Product Name</th>
+                    <th>Company Name</th>
+                    <th>No of Items</th>
+                    {{-- <th>Email</th> --}}
                     <th>Action</th>
                 </tr>
             </thead>
@@ -50,10 +50,10 @@
                 <tr>
                     <th>#</th>
                     <th>Registration Number</th>
-                    <th>NIC</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email</th>
+                    <th>Product Name</th>
+                    <th>Company Name</th>
+                    <th>No of Items</th>
+                    {{-- <th>Email</th> --}}
                     <th>Action</th>
                 </tr>
             </tfoot>
@@ -69,9 +69,9 @@
 <script>
     $(document).ready( function () {
             // $('#student-table').DataTable();
-            var url = '{{route('admin.supplier.all')}}';
-
-            $('#suppliers').DataTable({
+            var url = '{{route('admin.product.all')}}';
+            console.log('Checking..');
+            $('#products').DataTable({
                 destroy: true,
                 responsive: true,
                 processing: true,
@@ -84,17 +84,16 @@
                 order: [[0,"asc"]],
                 columns: [
                     {data:'DT_RowIndex', name: 'DT_RowIndex', orderable: true,searchable: true},
-                    {data: 'reg_number', name: 'reg_number'},
-                    {data: 'nic', name: 'nic'},
-                    {data:'first_name',name: 'first_name' },
-                    {data: 'last_name',name: 'last_name'},
-                    {data:'email',name: 'email' },
+                    {data: 'register_no', name: 'register_no'},
+                    {data: 'product_name', name: 'product_name'},
+                    {data:'company_name',name: 'company_name' },
+                    {data: 'no_of_items',name: 'no_of_items'},
                     {data:'action',name:'action',searchable: false }
                 ]
             });
         } );
 
-        $('#suppliers').on('click', '#delete-supplier', function () {
+        $('#products').on('click', '#delete-product', function () {
 
             toastr.options = {
                 "closeButton": true,
@@ -102,9 +101,9 @@
                 "positionClass": "toast-top-right"
             };
 
-            const id = $(this).data('supplier-id');
+            const id = $(this).data('product-id');
 
-            var url = "{{ route('admin.supplier.delete',':id') }}";
+            var url = "{{ route('admin.product.delete',':id') }}";
             url = url.replace(':id', id);
 
             var token = "{{ csrf_token() }}";
@@ -120,7 +119,7 @@
                         // swal("@lang('messages.sweetAlertDeleted')", response.message, "success").then(function (e) {
                         //     location.reload();
                         // });
-                        toastr.success("Supplier Deleted Successfully");
+                        toastr.success("product Deleted Successfully");
                         location.reload();
                     } else {
                         // swal("@lang('messages.deleteSuccess')", response.message, "error").then(function (e) {

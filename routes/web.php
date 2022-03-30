@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminEmployeeController;
 use App\Http\Controllers\AdminMedicineController;
 use App\Http\Controllers\AdminProfileController;
@@ -22,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return redirect('admin/login');
-});
+})->name('admin.login');
 
 Route::group(['prefix'=> 'admin', 'middleware'=>['admin:admin']], function(){
     Route::get('/login', [AdminController::class, 'loginForm']);
@@ -33,11 +34,12 @@ Route::get('/admin/logout', [AdminController::class, 'destroy'])->name('admin.lo
 Route::get('/admin/profile', [AdminProfileController::class, 'index'])->name('admin.profile');
 Route::post('/admin/profile.edit', [AdminProfileController::class, 'edit'])->name('admin.profile.edit');
 
-Route::get('/admin/product', [AdminMedicineController::class, 'index'])->name('admin.medicine');
-Route::get('/admin/product/store', [AdminMedicineController::class, 'store'])->name('admin.medicine.add');
+Route::get('/admin/product', [AdminMedicineController::class, 'index'])->name('admin.product');
+Route::get('/admin/product/all', [AdminMedicineController::class, 'productData'])->name('admin.product.all');
+Route::get('/admin/product/store', [AdminMedicineController::class, 'store'])->name('admin.product.add');
 Route::post('/admin/product/save', [AdminMedicineController::class, 'save'])->name('admin.product.save');
 Route::get('/admin/product/verification/{regNo}', [AdminMedicineController::class, 'verification'])->name('admin.product.verification');
-Route::post('/admin/supplier/delete/{id}', [AdminSupplierController::class, 'deleteSupplier'])->name('admin.supplier.delete');
+Route::post('/admin/product/delete/{id}', [AdminMedicineController::class, 'deleteProduct'])->name('admin.product.delete');
 
 Route::get('/admin/supplier', [AdminSupplierController::class, 'index'])->name('admin.supplier');
 Route::get('/admin/supplier/all', [AdminSupplierController::class, 'supplierData'])->name('admin.supplier.all');
@@ -49,9 +51,7 @@ Route::post('/admin/supplier/delete/{id}', [AdminSupplierController::class, 'del
 Route::get('/admin/employee', [AdminEmployeeController::class, 'index'])->name('admin.employee');
 Route::get('/admin/employee/store', [AdminEmployeeController::class, 'store'])->name('admin.employee.add');
 
-Route::middleware(['auth:sanctum,admin', 'verified'])->get('/admin/dashboard', function () {
-    return view('admin.index');
-})->name('admin.dashboard');
+Route::middleware(['auth:sanctum,admin', 'verified'])->get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 
 Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

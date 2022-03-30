@@ -8,12 +8,12 @@
 <div class="content-header">
     <div class="d-flex align-items-center">
         <div class="mr-auto">
-            <h3 class="page-title">Add New Supplier</h3>
+            <h3 class="page-title">Add New Product</h3>
             <div class="d-inline-block align-items-center">
                 <nav>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#"><i class="mdi mdi-account-circle"></i></a></li>
-                        <li class="breadcrumb-item" aria-current="page">Supplier</li>
+                        <li class="breadcrumb-item" aria-current="page">Product</li>
                         <li class="breadcrumb-item active" aria-current="page">Add</li>
                     </ol>
                 </nav>
@@ -30,7 +30,7 @@
     <div class="col-md-12 col-12">
         <div class="box">
           <div class="box-header with-border">
-            <h4 class="box-title">Supplier Registration Number <strong>Verification</strong></h4>
+            <h4 class="box-title">Product Registration Number <strong>Verification</strong></h4>
           </div>
           <div class="box-body">
             <h4></h4>
@@ -62,10 +62,10 @@
       <div class="modal center-modal fade" id="sForm" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content" style="border-radius: 8px;">
-              <form method="POST" action="{{ route('admin.supplier.save') }}" enctype="multipart/form-data">
+              <form method="POST" action="{{ route('admin.product.save') }}" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="regNo" id="regNo" value="">
-                <input type="hidden" name="nic" id="nic" value="">
+                <input type="hidden" name="itemNo" id="itemNo" value="">
               <div class="modal-header">
                 <h5 class="modal-title text-secondary" id="Registration"></h5>
                 <button type="button" class="close" data-dismiss="modal">
@@ -80,31 +80,31 @@
                             <div class="row">
                               <div class="col-12">
                                   <div class="form-group">
-                                      <h5>NIC Number <span class="text-danger">*</span></h5>
+                                      <h5>Item Code <span class="text-danger">*</span></h5>
                                       <div class="controls">
-                                          <input type="text" name="nicN" id="nicN" class="form-control" disabled required data-validation-required-message="This field is required"> <div class="help-block"></div>
+                                          <input type="text" name="itemNumber" id="itemNumber" class="form-control" disabled required data-validation-required-message="This field is required"> <div class="help-block"></div>
                                       </div>
                                   </div>
                                   <div class="form-group">
-                                      <h5>First Name <span class="text-danger">*</span></h5>
+                                      <h5>Product Name <span class="text-danger">*</span></h5>
                                       <div class="controls">
-                                          <input type="text" name="fname" id="fname" class="form-control" required data-validation-required-message="This field is required"> <div class="help-block"></div></div>
+                                          <input type="text" name="productName" id="productName" class="form-control" required data-validation-required-message="This field is required"> <div class="help-block"></div></div>
                                   </div>
                                   <div class="form-group">
-                                      <h5>Last Name <span class="text-danger">*</span></h5>
+                                      <h5>Company Name <span class="text-danger">*</span></h5>
                                       <div class="controls">
-                                          <input type="text" name="lname" id="lname" class="form-control" required data-validation-required-message="This field is required"> <div class="help-block"></div>
+                                          <input type="text" name="companyName" id="companyName" class="form-control" required data-validation-required-message="This field is required"> <div class="help-block"></div>
                                       </div>
                                   </div>
                                   <div class="form-group">
-                                      <h5>Email <span class="text-danger">*</span></h5>
+                                      <h5>Company Address<span class="text-danger">*</span></h5>
                                       <div class="controls">
-                                          <input type="email" name="email" id="email" class="form-control" required data-validation-required-message="This field is required"> <div class="help-block text-danger"></div></div>
+                                          <input type="text" name="companyAddress" id="companyAddress" class="form-control" required data-validation-required-message="This field is required"> <div class="help-block text-danger"></div></div>
                                   </div>
                                   <div class="form-group">
-                                      <h5>Telephone <span class="text-danger">*</span></h5>
+                                      <h5>No of Items<span class="text-danger">*</span></h5>
                                       <div class="controls">
-                                          <input type="number" name="phone" id="phone" min="0" class="form-control" required data-validation-required-message="This field is required"> <div class="help-block"></div></div>
+                                          <input type="number" min="0" name="noOfItems" id="noOfItems" class="form-control" value="0" required data-validation-required-message="This field is required"> <div class="help-block text-danger"></div></div>
                                   </div>
                               </div>
                             </div>
@@ -175,7 +175,7 @@
               </button>
             </div>
             <div class="modal-body">
-              <p>This Supplier Already Exit in This System. Try Again with New Registration Number</p>
+              <p>This Product Already Exit in This System. Try Again with New Registration Number</p>
             </div>
             <div class="modal-footer modal-footer-uniform">
               <button type="button" class="btn btn-rounded btn-danger float-right" data-dismiss="modal">Close</button>
@@ -219,18 +219,18 @@
                     $('#already_exit').modal('show');
                 }
                 else if (data.status == "success") {
-                    // var supplier = data.data[0];
-                    // var url2 = "{{ route('admin.supplier.verification',':supplier') }}";
-                    // url3 = url2.replace(':supplier', supplier);
+                    // var product = data.data[0];
+                    // var url2 = "{{ route('admin.product.verification',':product') }}";
+                    // url3 = url2.replace(':product', product);
                     // window.location.href = url3;
-                    console.log(data);
-                    $('#regNo').val(data.data[0].regNo);
-                    $('#Registration').html(data.data[0].regNo);
-                    $('#nicN').val(data.data[0].nic);
-                    $('#nic').val(data.data[0].nic);
-                    $('#fname').val(data.data[0].fName);
-                    $('#lname').val(data.data[0].lName);
-                    $('#email').val(data.data[0].email);
+                    console.log(data.data.Registeration_number);
+                    $('#regNo').val(data.data.Registeration_number);
+                    $('#Registration').html(data.data.Registeration_number);
+                    $('#itemNo').val(data.data.Item_code);
+                    $('#itemNumber').val(data.data.Item_code);
+                    $('#productName').val(data.data.Product_name);
+                    $('#companyName').val(data.data.Company_name);
+                    $('#companyAddress').val(data.data.Company_Adress);
                     $('#sForm').modal('show');
                 }
                 else if(data.status == "invalid")

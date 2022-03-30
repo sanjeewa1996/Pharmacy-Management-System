@@ -33,8 +33,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ route('admin.medicine') }}"><i class="ti-more"></i>All Medicine</a></li>
-            <li><a href="{{ route('admin.medicine.add') }}"><i class="ti-more"></i>Add Medicine</a></li>
+            <li><a href="{{ route('admin.product') }}"><i class="ti-more"></i>All Medicine</a></li>
+            <li><a href="{{ route('admin.product.add') }}"><i class="ti-more"></i>Add Medicine</a></li>
           </ul>
         </li>
 
