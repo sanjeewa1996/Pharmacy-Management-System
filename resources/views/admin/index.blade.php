@@ -32,8 +32,8 @@
                     {{-- </svg> --}}
                 </div>
                 <div>
-                    <p class="text-mute text-white mt-20 mb-0 font-size-16">Total Medicines</p>
-                    <h3 class="text-white mb-0 font-weight-500">500</h3>
+                    <p class="text-mute text-white mt-20 mb-0 font-size-16">All Variety of Medicines</p>
+                    <h3 class="text-white mb-0 font-weight-500">{{ $data['medicines'] }}</h3>
                 </div>
             </div>
         </div>
@@ -46,7 +46,7 @@
                 </div>
                 <div>
                     <p class="text-mute text-white mt-20 mb-0 font-size-16">Total Suppliers</p>
-                    <h3 class="text-white mb-0 font-weight-500">{{ $no_of_suppliers }}</h3>
+                    <h3 class="text-white mb-0 font-weight-500">{{ $data['no_of_suppliers'] }}</h3>
                 </div>
             </div>
         </div>
@@ -58,8 +58,8 @@
                     <i class="text-info mr-0 font-size-24 mdi mdi-chart-bar-stacked"></i>
                 </div>
                 <div>
-                    <p class="text-mute text-white mt-20 mb-0 font-size-16">Out of Stockes Medicines</p>
-                    <h3 class="text-white mb-0 font-weight-500">30</h3>
+                    <p class="text-mute text-white mt-20 mb-0 font-size-16">Count of Medicine Items</p>
+                    <h3 class="text-white mb-0 font-weight-500">{{ $data['count_of_all_items'] }}</h3>
                 </div>
             </div>
         </div>

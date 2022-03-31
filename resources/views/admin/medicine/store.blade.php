@@ -8,12 +8,12 @@
 <div class="content-header">
     <div class="d-flex align-items-center">
         <div class="mr-auto">
-            <h3 class="page-title">Add New Product</h3>
+            <h3 class="page-title">Add New Medicine</h3>
             <div class="d-inline-block align-items-center">
                 <nav>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#"><i class="mdi mdi-account-circle"></i></a></li>
-                        <li class="breadcrumb-item" aria-current="page">Product</li>
+                        <li class="breadcrumb-item" aria-current="page">Medicine</li>
                         <li class="breadcrumb-item active" aria-current="page">Add</li>
                     </ol>
                 </nav>
@@ -30,13 +30,13 @@
     <div class="col-md-12 col-12">
         <div class="box">
           <div class="box-header with-border">
-            <h4 class="box-title">Product Registration Number <strong>Verification</strong></h4>
+            <h4 class="box-title">Medicine Registration Number <strong>Verification</strong></h4>
           </div>
           <div class="box-body">
             <h4></h4>
             <form id="form-1" action="javascript:void(0)" method="GET">
                 <div class="form-group">
-                    <h5>Product Registration Number <span class="text-danger">*</span></h5>
+                    <h5>Medicine Registration Number <span class="text-danger">*</span></h5>
                     <div class="controls">
                         <input type="text" id="name" name="name" class="form-control"  data-validation-required-message="This field is required"> <div class="help-block"></div></div>
 
@@ -175,7 +175,7 @@
               </button>
             </div>
             <div class="modal-body">
-              <p>This Product Already Exit in This System. Try Again with New Registration Number</p>
+              <p>This Medicine Already Exit in This System. Try Again with New Registration Number</p>
             </div>
             <div class="modal-footer modal-footer-uniform">
               <button type="button" class="btn btn-rounded btn-danger float-right" data-dismiss="modal">Close</button>

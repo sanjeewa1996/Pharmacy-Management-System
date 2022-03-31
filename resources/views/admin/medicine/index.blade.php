@@ -29,7 +29,7 @@
     <div class="box">
         <div class="box-header with-border">
         <h3 class="box-title">Medicine Table</h3>
-        <h6 class="box-subtitle">Export as CSV, Excel, PDF</h6>
+        {{-- <h6 class="box-subtitle">Export as CSV, Excel, PDF</h6> --}}
         </div>
         <!-- /.box-header -->
         <div class="box-body">

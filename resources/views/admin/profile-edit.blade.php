@@ -26,13 +26,13 @@
 <div class="row">
     <div class="box box-widget widget-user">
         <!-- Add the bg color to the header using any of the bg-* classes -->
-        <div class="widget-user-header bg-black" style="background-color: #000051">
+        <div class="widget-user-header bg-primary" style="background-color: ">
           <h3 class="widget-user-username">Pharmacy Admin</h3>
         </div>
         <div class="widget-user-image">
           <img class="rounded-circle"  style="height: 90px;" src="{{ !empty($user->profile_photo_path) ? url('upload/admin_image/'.$user->profile_photo_path) : url('upload/profile_image.png') }}" alt="User Avatar">
         </div>
-        <div class="box-footer" style="background-color: #000051; margin-top: 1px;">
+        <div class="box-footer bg-primary" style="margin-top: 1px;">
           <div class="row">
             <div class="col-sm-6">
               <div class="description-block">

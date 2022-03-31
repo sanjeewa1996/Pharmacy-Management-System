@@ -1,6 +1,6 @@
 <aside class="main-sidebar">
     <!-- sidebar-->
-    <section class="sidebar">
+    <section class="sidebar" style="background-color: #f6f7f974">
 
         <div class="user-profile">
 			<div class="ulogo">
@@ -66,12 +66,10 @@
           </ul>
         </li>
 
-        <li class="header nav-small-cap">User Interface</li>
-
       </ul>
     </section>
 
-	<div class="sidebar-footer">
+	<div class="sidebar-footer" style="background-color: #171e28; color: #fff">
 		<!-- item-->
 		<a href="javascript:void(0)" class="link" data-toggle="tooltip" title="" data-original-title="Settings" aria-describedby="tooltip92529"><i class="ti-settings"></i></a>
 		<!-- item-->
