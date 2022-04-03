@@ -15,8 +15,10 @@ class AdminDashboardController extends Controller
         $data = [
             'no_of_suppliers' => Supplier::get()->count(),
             'count_of_all_items' => Product::sum('no_of_items'),
-            'medicines' => Product::get()->count()
+            'medicines' => Product::get()->count(),
+			//'medicine' => Product::get()
         ];
-        return view('admin.index')->with('data', $data);
+		$medi = Product::where('no_of_items', '<', 20)->get();
+        return view('admin.index')->with('data', $data)->with('medi', $medi);
     }
 }

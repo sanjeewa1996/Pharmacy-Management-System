@@ -30,14 +30,14 @@ class AdminSupplierController extends Controller
         }
 
         try{
-            $response = Http::get('http://localhost:8070/supplier/get/'.$regNo);
+            $response = Http::get('http://ps.yaatter.xyz/api/supplier/get/'.$regNo);
         }
         catch(Exception $e) {
             return response()->json(['status' => 'fail', 'error' => $e]);
         }
         $data = $response->object();
 
-        if($data->Status == true)
+        if($data->Status == "Supplier is successfully fetched!!")
         {
             return response()->json(['status' => 'success', 'data' => $data->supplier]);
         }
